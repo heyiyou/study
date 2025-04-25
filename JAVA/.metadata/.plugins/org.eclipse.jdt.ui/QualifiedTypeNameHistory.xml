@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.test.nice.Kiosk"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.lang.Void"/>
+    <fullyQualifiedTypeName name="com.peisia.kioskV10A.Color"/>
+    <fullyQualifiedTypeName name="com.peisia.kioskV11.Color"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="javax.swing.border.TitledBorder"/>
+    <fullyQualifiedTypeName name="javax.naming.ldap.PagedResultsControl"/>
+    <fullyQualifiedTypeName name="com.peisia.easyboard.Post"/>
+    <fullyQualifiedTypeName name="com.test.nice.Main"/>
+    <fullyQualifiedTypeName name="Private.FinalBoss"/>
+    <fullyQualifiedTypeName name="java.util.concurrent.ArrayBlockingQueue"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,17 @@
+package com.test.nice;
+
+public class Main {
+	int num = 15
+	if(num>15) {
+		System.out.println("num이 10보다 크다.");
+		
+	}
+	
+
+}
+
+
+
+
+
+

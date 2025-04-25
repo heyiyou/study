@@ -1,0 +1,13 @@
+package Exception;
+
+public class Cat {
+	String name;
+	boolean isHot;
+	int price;
+
+	public Cat(String name, boolean isHot, int price) {
+		this.name = name;
+		this.isHot = isHot;
+		this.price = price;
+	}
+}

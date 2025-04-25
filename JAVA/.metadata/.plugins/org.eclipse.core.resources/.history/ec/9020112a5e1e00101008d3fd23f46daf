@@ -1,0 +1,17 @@
+package com.peisia.c.test;
+
+import java.util.ArrayList;
+
+import com.peisia.c.util.So;
+
+public class Main {
+	public static void main(String[] args) {
+		Object o;
+		
+		Cat cat = new Cat();
+		cat.toString();
+			
+		}
+	}
+	
+

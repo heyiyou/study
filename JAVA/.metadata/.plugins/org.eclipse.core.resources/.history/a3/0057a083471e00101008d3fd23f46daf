@@ -1,0 +1,3 @@
+module Kiosk1 {
+	exports com.diva.map;
+}

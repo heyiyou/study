@@ -1,0 +1,22 @@
+package Private;
+
+import java.util.concurrent.ArrayBlockingQueue;
+
+public class FinalBoss {
+	private FinalBoss() {
+		System.out.println("마지막 보스등장");
+		System.out.println("하이");
+	}
+
+	// 클래스 내부에 private static 변수로 유일한 인스턴스를 생성
+//	ArratList<String> s = new ArrayList<>();           설명
+	// ArratList<String> s;
+
+	private static FinalBoss f = new FinalBoss();
+
+//유일한 인스턴스 변환
+
+	public static FinalBoss getInstance() {
+		return f;
+	}
+}

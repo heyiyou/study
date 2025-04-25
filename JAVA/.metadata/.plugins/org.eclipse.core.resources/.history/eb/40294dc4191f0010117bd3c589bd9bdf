@@ -1,0 +1,12 @@
+package Exception;
+
+public class Cat {
+    public void feed(String food) throws CatException {
+        if (!food.equals("참치")) {
+            throw new CatException("이 고양이는 참치를 원해요!");
+        } else {
+            System.out.println("고양이가 참치를 먹고 행복해합니다.");
+        }
+    }
+}
+

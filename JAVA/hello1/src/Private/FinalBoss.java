@@ -1,0 +1,27 @@
+package Private;
+
+public class FinalBoss {
+	private FinalBoss() {
+		System.out.println("마지막 보스등장");
+	}
+
+	// 클래스 내부에 private static 변수로 유일한 인스턴스를 생성
+//	ArratList<String> s = new ArrayList<>();           설명
+	// ArratList<String> s;
+
+	private static FinalBoss f = new FinalBoss();   // 값을 만듬 f
+	//private static FinalBoss f2 = new FinalBoss();  // 일단 가능은 함 
+
+//유일한 인스턴스 변환
+
+	public static FinalBoss getInstance() {
+ 		return f;//출구   f
+ 		
+	}
+}
+
+
+
+// 싱글톤 영역 
+ // 오직 객체를 한개만 생성되도록 보장하는 장치 
+//

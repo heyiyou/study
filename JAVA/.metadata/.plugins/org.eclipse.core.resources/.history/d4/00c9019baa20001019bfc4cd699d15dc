@@ -1,0 +1,9 @@
+package rule;
+
+public class Main {
+	public static void main(String[] args) {
+		Dice r = new Dice();
+		r.run();{
+	}
+	}
+}

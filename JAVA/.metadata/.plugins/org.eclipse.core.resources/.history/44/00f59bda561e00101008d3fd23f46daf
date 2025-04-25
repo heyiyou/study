@@ -1,0 +1,23 @@
+package com.peisia.helloword;
+
+import java.util.HashMap;
+
+public class Main {
+	public static void main(String[] args) {
+		//음식 리스트를 등록
+		//음식을 검색
+		HashMap<String,Food> foods = new HashMap<>();
+		
+		Food f1 = new Food("라면",true,3500);
+		Food f2 = new Food("냉면",false,12000);
+		
+		foods.put("라면", f1);
+		foods.put("냉면", f2);
+	
+		Food selectFood = foods.get("냉면");
+		System.out.println("주문하신 음식은:"+selectFood.name);
+		System.out.println("hot/cold 는:"+selectFood.isHot);
+		System.out.println("가격은 :"+selectFood.price);
+	}
+}
+

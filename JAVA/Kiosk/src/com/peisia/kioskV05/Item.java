@@ -1,0 +1,20 @@
+package com.peisia.kioskV05;
+
+public class Item {
+
+	// 1 필드
+	String name;
+	int price;
+
+	// 2 생성자
+	public Item(String name, int price) {
+		this.name = name;
+		this.price = price;
+	}
+
+	// 3 상품 정보 출력
+	void info() {
+		System.out.println("상품명:" + name + "/가격" + price + "원");
+	}
+
+}

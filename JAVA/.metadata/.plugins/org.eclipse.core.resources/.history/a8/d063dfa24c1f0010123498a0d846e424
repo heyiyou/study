@@ -1,0 +1,19 @@
+package com.peisia.c.test;
+
+import java.util.ArrayList;
+
+import com.peisia.c.util.So;
+
+public class Main {
+	public static void main(String[] args) {
+		Sword s = mew Sword();
+		
+		Cat cat = new Cat();
+		cat.x(s);
+
+		String s = "개";
+		s.
+		}
+	}
+	
+

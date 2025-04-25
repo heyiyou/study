@@ -1,0 +1,8 @@
+package com.test7;
+
+public class Object {
+	void xx() {
+		System.out.println();
+	}
+
+}

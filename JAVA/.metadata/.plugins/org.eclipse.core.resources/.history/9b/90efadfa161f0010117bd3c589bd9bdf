@@ -1,0 +1,15 @@
+package com.peisia.c.test;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Cat cat = new Cat();
+		try {
+			cat.feed("참치");
+			cat.feed("멸치");
+		} catch (CatException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

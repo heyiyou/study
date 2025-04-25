@@ -1,0 +1,37 @@
+package HaskMapV4;
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		// 음식 리스트를 등록
+		// 음식을 검색
+		HashMap<String, Food> foods = new HashMap<>();
+
+		foods.put("라면", new Food("라면", true, 3500, "ramen", "方便面"));
+		foods.put("냉면", new Food("냉면", false, 12000, "cold noodles", "冷面"));
+		foods.put("쫄면", new Food("쫄면", false, 12000, "jjolmyeon", "嚼劲面"));
+		foods.put("짜장면", new Food("짜장면", true, 10000, "jjajangmyeon", "炸酱面"));
+
+		Scanner sc = new Scanner(System.in);
+		System.out.print("원하시는 음식 이름을 입력해주세요:");
+		String cmd = sc.next();
+
+		Food selectFood = foods.get(cmd);
+		System.out.println("주문하신 음식은:" + selectFood.name);
+		System.out.println("hot/cold 는:" + selectFood.isHot);
+		System.out.println("hot/cold 는:" + selectFood.price);
+		System.out.println("영어 이름은:" + selectFood.global.get("eng"));
+		System.out.println("중국어 이름은:" + selectFood.global.get("chn"));
+
+		// 메뉴 다 찍기. HashMap 도 다 꺼내는게 귀찮음. 아래 같은 패턴으로 빼셔야됨
+		// entrySet()을 사용하여 모든 키-값 쌍을 순회하고 출력
+
+//        for (Map.Entry<String, Food> entry : foods.entrySet()) {
+//            String key = entry.getKey();
+//            Food f = entry.getValue();
+//            System.out.println(key + " = " + f.name);
+//        }
+	}
+}

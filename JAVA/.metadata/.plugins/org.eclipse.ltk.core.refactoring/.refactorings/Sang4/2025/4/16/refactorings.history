@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;com.peisia.c.sang4&apos; to &apos;Kiosk/src&apos;&#x0D;&#x0A;- Original project: &apos;Sang4&apos;&#x0D;&#x0A;- Destination element: &apos;Kiosk/src&apos;&#x0D;&#x0A;- Original element: &apos;Sang4/src/com.peisia.c.sang4&apos;" description="Copy package" destination="=Kiosk/src" element1="/src&lt;com.peisia.c.sang4" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1744687279508" version="1.0"/>
+</session>
