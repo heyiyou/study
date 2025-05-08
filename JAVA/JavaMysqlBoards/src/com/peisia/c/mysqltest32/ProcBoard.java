@@ -1,4 +1,4 @@
-package com.peisia.c.mysqltest45;
+package com.peisia.c.mysqltest32;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
