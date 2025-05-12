@@ -31,8 +31,7 @@
 		if(resultCount == 1){
 			System.out.println("==== 글수정 성공");
 		} else {
-			System.out.println("==== 글수정 실패");
-		}
+			System.out.println("	==== 글수정 실패");}
 	} catch (Exception e) {		
 		e.printStackTrace();
 	}

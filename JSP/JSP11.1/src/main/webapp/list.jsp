@@ -11,14 +11,13 @@
 <title>게시판 리스트</title>
 <style>
     table { border-collapse: collapse; width: 80%; margin: auto; }
-    th, td { border: 1px solid #888; padding: 8px; text-align: center; color:blue; }
+    th, td { border: 1px solid #888; padding: 8px; text-align: center; color:blak; }
     th { background-color: #f2f2f2; }   
-     
     h2 { text-align: center; }
 </style>
 </head>
 <body>
-<h2>🐱 고양이 게시판 - 리스트</h2>
+<h2>🎮🎮🎮  나만의 게시판 - 리스트  🕹️🕹️🕹️</h2>
 <a href="write.jsp">[글쓰기]</a> | <a href="index.jsp">[홈]</a>
 <br><br>
 
@@ -35,7 +34,8 @@
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_cat", "root", "root");
 		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery("SELECT * FROM cat_board ORDER BY num DESC");
+		ResultSet rs = st.executeQuery("SELECT * FROM cat_board ORDER BY num");
+		int indexnum = 1;
 
 		while (rs.next()) {
 			String num = rs.getString("num");
@@ -43,13 +43,15 @@
 			String content = rs.getString("content");
 			String id = rs.getString("id");
 %>
+
 	<tr>
-		<td><%= num %></td>
+		<td><%= indexnum %></td>
 		<td><a href="read.jsp?num=<%= num %>"><%= title %></a></td>
 		<td><%= content %></td>
 		<td><%= id %></td>
 	</tr>
 <%
+			indexnum++;
 		}
 		rs.close();
 		st.close();
