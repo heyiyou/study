@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+	String s = "헬로 키티 월드!";
+%>
 
+<%=s %>
 </body>
 </html>

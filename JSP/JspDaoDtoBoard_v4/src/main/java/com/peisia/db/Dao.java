@@ -11,7 +11,7 @@ public class Dao extends Da{
 		super.update(sql);
 		super.close();	//[고정4,5]
 	}
-	/* (2/5)쓰기 */
+	/* (2/5)쓰기 작성 */
 	public void write(Dto d) {
 		super.connect();	//[고정1,2,3]
 		String sql = String.format(
@@ -118,7 +118,7 @@ public class Dao extends Da{
 		super.connect();	//[고정1,2,3]
 		try {
 			String sql = String.format(
-					"select count(*) from %s where b_title like '%%%s%%'"
+					"select count(*) from %s where b_title like '%%%s%%'"       //
 					,Db.TABLE_PS_BOARD_FREE,word);
 			System.out.println("sql:"+sql);//todo
 			ResultSet rs = st.executeQuery(sql);

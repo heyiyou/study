@@ -33,18 +33,18 @@ for(int i=0;i<posts.size();i=i+1){
 %>
 
 <%=posts.get(i).no%>
-<a href="read.jsp?no=<%=posts.get(i).no%>"><%=posts.get(i).title%></a>
+<a href="read.jsp?no=<%=posts.get(i).no%>"><%=posts.get(i).title%></a> <!-- 1코드로 나오게 하는 코드 -->
 <%=posts.get(i).id%>
 <hr>
 <%
 }
 for(int i=1;i<=totalPage;i=i+1){
 %>
-<a href="list.jsp?page=<%=i%>&word=<%=searchWord%>"><%=i%></a>
+<a href="list.jsp?page=<%=i%>&word=<%=searchWord%>"><%=i%></a>    <!--코드 반복  -->
 <%
 }
 %>
-<form action="list.jsp">
+<form action="list.jsp">                     <!--이 form 안에 있는게 검색 코드 1  -->
 	<input name="word">
 	<input type="submit" value="검색">
 </form>

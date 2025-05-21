@@ -1,0 +1,53 @@
+package com.peisia.kioskV01;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Board {
+	Scanner sc = new Scanner(System.in);
+	ArrayList<Post> ps = new ArrayList<>();
+	
+	void run() {
+		xx:while(true) {
+			//todo
+			//메뉴 선택하게 하기
+			System.out.println("crud 1.쓰기 2.읽기 3.리스트 4.수정 5.삭제 e.프로그램 종료");
+			String cmd = sc.next();
+			switch(cmd) {
+			case "1":
+				System.out.println("쓰기");
+				System.out.println("제목:");
+				String title = sc.next();
+				System.out.println("본문:");
+				String content = sc.next();
+				System.out.println("작성자:");
+				String writer = sc.next();
+				Post p = new Post(title,content,writer);
+				ps.add(p);
+				break;
+			case "2":
+				System.out.println("읽기");
+				break;
+			case "3":
+				System.out.println("리스트");
+//				for(int i=0;i<ps.size();i++)
+				for(int i=0;i<ps.size();i=i+1) {
+					String t = ps.get(i).title;
+					String c = ps.get(i).content;
+					String w = ps.get(i).writer;
+					System.out.println("제목: "+t+" 작성자: "+w);
+				}
+				break;
+			case "4":
+				System.out.println("수정");
+				break;
+			case "5":
+				System.out.println("삭제");
+				break;
+			case "e":
+				System.out.println("프로그램종료");
+				break xx;
+			}
+		}
+	}
+}
