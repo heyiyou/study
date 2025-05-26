@@ -33,7 +33,7 @@
 		totalPage = dao.getPageCount(); //총 페이지 수 구하기
 	} else { // case2. 검색어가 있으면
 		posts = dao.selectlistSearch(searchWord, pageNum);
-		totalPage = dao.getSearchPageCount(searchWord); //총 페이지 수 구하기
+		totalPage = dao.getSearchPageCount (searchWord); //총 페이지 수 구하기
 	}
 
 	for (int i = 0; i < posts.size(); i = i + 1) {
