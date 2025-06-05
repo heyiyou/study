@@ -6,7 +6,7 @@
 	<!-- resultType 에 복수형(ArrayList 등)을 적는게 아님. 
 	그냥 dto 단수의 경로를 적어야됨. -->
 	<select id="getList" resultType="com.peisia.dto.GuestDto">
-		SELECT * from tbl_guest
+		SELECT * from tbl_guest limit #{limitIndex} , 5               <!--페이지 1 수정-->
 	</select>
 	
 	<select id="read" resultType="com.peisia.dto.GuestDto">
@@ -39,5 +39,13 @@
 	-->	
 	<insert id="write">
 		insert into tbl_guest (btext) values (#{btext})
-	</insert>				
+	</insert>
+	
+	
+	<update id="modify">
+		update tbl_guest
+		set btext = #{btext}
+		where bno = #{bno}
+	</update>	
+					
 </mapper>

@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+/* 전체 배경과 폰트 */
+body {
+	background: pink;
+	font-family: 'Arial', sans-serif;
+	color: black;
+	padding: 20px;
+}
+
+/* 제목 */
+h1 {
+	color: red;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+/* 테이블 */
+table {
+	width: 50%;
+	margin: auto;
+	border-collapse: collapse;
+	background-color: white;
+	box-shadow: 2px 2px 5px gray;
+}
+
+/* 테이블 헤더 */
+table tr:first-child td {
+	background-color: skyblue;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	padding: 6px;
+}
+
+/* 테이블 셀 */
+tr, td {
+	border: 1px solid green;
+	padding: 10px;
+	text-align: center;
+}
+
+/* 링크 */
+a {
+	color: blue;
+	text-decoration: none;
+}
+a:hover {
+	color: orangered;
+	text-decoration: underline;
+}
+div {
+	margin-top: 100px;
+}
+.center{
+	text-align:center;
+}
+
+}

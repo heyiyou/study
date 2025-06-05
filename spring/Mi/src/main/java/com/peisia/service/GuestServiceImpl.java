@@ -11,6 +11,7 @@ import com.peisia.mapper.GuestMapper;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
+
 @Log4j
 @Service
 //@AllArgsConstructor
@@ -20,10 +21,12 @@ public class GuestServiceImpl implements GuestService{
 	private GuestMapper mapper;	                             //구현
 	
 	@Override
-	public ArrayList<GuestDto> getList() {
+	public ArrayList<GuestDto> getList(int currentPage) {
 		log.info("비지니스 계층===========");
-		return mapper.getList();
+		int limitIndex = (currentPage-1) * 5;                    // 페이징1 추가됨 ( 23~28 전체)
+		return mapper.getList(limitIndex);
 	}
+	
 	
 	@Override
 	public GuestDto read(long bno) {
@@ -40,4 +43,8 @@ public class GuestServiceImpl implements GuestService{
 		mapper.write(dto);
 	}		
 	
+	@Override
+	public void modify(GuestDto dto) {
+		mapper.modify(dto);
+	}	
 }
