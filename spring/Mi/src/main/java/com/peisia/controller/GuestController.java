@@ -22,30 +22,30 @@ public class GuestController {
 	private GuestService service;
 	
 	@GetMapping("/getList")
-	public void getList(@RequestParam("currentPage") int currentPage, Model model) {
+	public void getList(@RequestParam(value="currentPage", defaultValue = "1") int currentPage, Model model) {
 		model.addAttribute("list",service.getList(currentPage));
 	}
 	
 	@GetMapping({"/read", "/modify"})
 	public void read(@RequestParam("bno") Long bno, Model model) {
-		log.info("ÄÁÆ®·Ñ·¯ ==== ±Û¹øÈ£ ==============="+bno);
+		log.info("ì»¨íŠ¸ë¡¤ëŸ¬ ==== ê¸€ë²ˆí˜¸ ==============="+bno);
 		model.addAttribute("read",service.read(bno));
 	}
 	
 	@GetMapping("/del")
 	public String del(@RequestParam("bno") Long bno) {
-		log.info("ÄÁÆ®·Ñ·¯ ==== ±Û¹øÈ£ ==============="+bno);
+		log.info("ì»¨íŠ¸ë¡¤ëŸ¬ ==== ê¸€ë²ˆí˜¸ ==============="+bno);
 		service.del(bno);
-		return "redirect:/guest/getList?currentPage=1";	// Ã¥ p.245 Âü°í
+		return "redirect:/guest/getList?currentPage=1";	// ì±… p.245 ì°¸ê³ 
 	}
 	
 	@PostMapping("/write")
 	public String write(GuestDto gvo) {
 		service.write(gvo);
-		return "redirect:/guest/getList?currentPage=1";	// Ã¥ p.245 Âü°í
+		return "redirect:/guest/getList?currentPage=1";	// ì±… p.245 ì°¸ê³ 
 	}
 	
-	@GetMapping("/write")	// Ã¥ p.239 /write Áßº¹ÀÌÁö¸¸ ÀÌ°Ç ±Û¾²±â È­¸éÀ» À§ÇÑ url ¸ÅÇÎ
+	@GetMapping("/write")	// ì±… p.239 /write ì¤‘ë³µì´ì§€ë§Œ ì´ê±´ ê¸€ì“°ê¸° í™”ë©´ì„ ìœ„í•œ url ë§¤í•‘
 	public void write() {
 		
 	}

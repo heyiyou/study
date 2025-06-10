@@ -28,33 +28,33 @@ public class TestController {
 		String two = service.getTwo();
 		Integer sum = Integer.parseInt(one) + Integer.parseInt(two); 
 		
-		log.info("(¿©±â ÄÁÆ®·Ñ·¯ÀÓ) 1 ´õÇÏ±â 2´Â = " + sum);
+		log.info("(ì—¬ê¸° ì»¨íŠ¸ë¡¤ëŸ¬ì„) 1 ë”í•˜ê¸° 2ëŠ” = " + sum);
 		
 		model.addAttribute("sum",sum);
 	}
 	
 
-	@GetMapping("/updateVisitantCount")       //¹®1
+	@GetMapping("/updateVisitantCount")       //ë¬¸1
 	public void updateVisitantCount() {
-		log.info("========================================== : ÄÁÆ®·Ñ·¯¿¡¼­ updateVisitantCount() ½ÇÇàÁß");
+		log.info("========================================== : ì»¨íŠ¸ë¡¤ëŸ¬ì—ì„œ updateVisitantCount() ì‹¤í–‰ì¤‘");
 		service.updateVisitantCount();
 		
-		log.info("(¿©±â ÄÁÆ®·Ñ·¯ÀÓ) ¾÷µ¥ÀÌÆ® Àß µÆÀ½");
+		log.info("(ì—¬ê¸° ì»¨íŠ¸ë¡¤ëŸ¬ì„) ì—…ë°ì´íŠ¸ ì˜ ëìŒ");
 	}
 	
 	
-	@GetMapping("/insertDoodle")              //¹®2
+	@GetMapping("/insertDoodle")              //ë¬¸2
 	public void insertDoodle() {
-		log.info("========================================== : ÄÁÆ®·Ñ·¯¿¡¼­ insertDoodle() ½ÇÇàÁß");
+		log.info("========================================== : ì»¨íŠ¸ë¡¤ëŸ¬ì—ì„œ insertDoodle() ì‹¤í–‰ì¤‘");
 		service.insertDoodle();
-		log.info("(¿©±â ÄÁÆ®·Ñ·¯ÀÓ) insert Àß µÆÀ½");
+		log.info("(ì—¬ê¸° ì»¨íŠ¸ë¡¤ëŸ¬ì„) insert ì˜ ëìŒ");
 	}
 	
 
-	@GetMapping("/delTest")                   //¹®3
+	@GetMapping("/delTest")                   //ë¬¸3
 	public void delTest() {
-		log.info("========================================== : ÄÁÆ®·Ñ·¯¿¡¼­ delTest() ½ÇÇàÁß");
+		log.info("========================================== : ì»¨íŠ¸ë¡¤ëŸ¬ì—ì„œ delTest() ì‹¤í–‰ì¤‘");
 		service.delTest();
-		log.info("(¿©±â ÄÁÆ®·Ñ·¯ÀÓ) delTest Àß µÆÀ½");
+		log.info("(ì—¬ê¸° ì»¨íŠ¸ë¡¤ëŸ¬ì„) delTest ì˜ ëìŒ");
 	}	
 }

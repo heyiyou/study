@@ -19,31 +19,31 @@ public class WeatherController {
 
 	@RequestMapping("/w")							
 	public void w() {							
-		//// ¿ì¸®³ª¶ó °ø°ø api ////						
-		//ÀÎÄÚµù ÀÎÁõÅ°						
+		//// ìš°ë¦¬ë‚˜ë¼ ê³µê³µ api ////						
+		//ì¸ì½”ë”© ì¸ì¦í‚¤						
 		String API_KEY = "TDf%2Fho9nOMC2Ho71ocCWLwhwgKl9KBhSyyX67Pylaw%2BN0V7GQsIt%2B7UaJQsN9X%2FrpsIc%2FJJR%2Bltqo30nKyUXjA%3D%3D";						
 		String API_URL = "http://apis.data.go.kr/1360000/AsosDalyInfoService/getWthrDataList?numOfRows=10&pageNo=1&dateCd=DAY&startDt=20250603&endDt=20250604&stnIds=108&dataCd=ASOS&dataType=JSON&serviceKey=" + API_KEY;						
-				// * ÁÖÀÇ * https ¾Æ´Ô http ÀÓ. https ´Â ÀÎÁõ°ü·Ã º¹ÀâÇÑ Ã³¸®¸¦ ÇØ¾ßÇÔ.				
+				// * ì£¼ì˜ * https ì•„ë‹˜ http ì„. https ëŠ” ì¸ì¦ê´€ë ¨ ë³µì¡í•œ ì²˜ë¦¬ë¥¼ í•´ì•¼í•¨.				
 		RestTemplate restTemplate = new RestTemplate();						
 								
-		//// **** Áß¿ä **** uri						
-		URI uri = null; //java.net.URI ÀÓÆ÷Æ® ÇÏ¼À						
+		//// **** ì¤‘ìš” **** uri						
+		URI uri = null; //java.net.URI ì„í¬íŠ¸ í•˜ì…ˆ						
 		try {						
-			uri = new URI(API_URL); // URI Å¬·¡½º´Â URL¿¡ ´ëÇÑ À¯È¿¼º °Ë»ç, ±¸¼º¿ä¼Ò ÃßÃâ, º¸¾È(Æ¯¼ö¹®ÀÚ, °ø¹é Ã³¸® µî)À» µµ¿ÍÁÜ					
+			uri = new URI(API_URL); // URI í´ë˜ìŠ¤ëŠ” URLì— ëŒ€í•œ ìœ íš¨ì„± ê²€ì‚¬, êµ¬ì„±ìš”ì†Œ ì¶”ì¶œ, ë³´ì•ˆ(íŠ¹ìˆ˜ë¬¸ì, ê³µë°± ì²˜ë¦¬ ë“±)ì„ ë„ì™€ì¤Œ					
 		} catch (URISyntaxException e) {						
 			e.printStackTrace();					
 		}						
 								
 		String s = restTemplate.getForObject(uri, String.class); //					 	
-		log.info("====== ¿ì¸®³ª¶ó ³¯¾¾ Àß ³ª¿À³ª? "+s);		
+		log.info("====== ìš°ë¦¬ë‚˜ë¼ ë‚ ì”¨ ì˜ ë‚˜ì˜¤ë‚˜? "+s);		
 		
-		KWeatherDto kw = restTemplate.getForObject(uri, KWeatherDto.class); // ÀÚ±â Å¬·¡½º·Î ¹Ù²Ù½Ã¿À..												
-		log.info("==== json ==== : ¿ì¸®³ª¶ó ³¯¾¾ Àß ³ª¿À³Ä? : "+kw.response.body.dataType);												
-		log.info("==== json ==== : ¿ì¸®³ª¶ó ³¯¾¾ Àß ³ª¿À³Ä? : "+kw.response.body.dataType);												
+		KWeatherDto kw = restTemplate.getForObject(uri, KWeatherDto.class); // ìê¸° í´ë˜ìŠ¤ë¡œ ë°”ê¾¸ì‹œì˜¤..												
+		log.info("==== json ==== : ìš°ë¦¬ë‚˜ë¼ ë‚ ì”¨ ì˜ ë‚˜ì˜¤ëƒ? : "+kw.response.body.dataType);												
+		log.info("==== json ==== : ìš°ë¦¬ë‚˜ë¼ ë‚ ì”¨ ì˜ ë‚˜ì˜¤ëƒ? : "+kw.response.body.dataType);												
 		String location = kw.response.body.items.item.get(0).stnNm;												
 		String tMin = kw.response.body.items.item.get(0).minTa;												
 		String tMax = kw.response.body.items.item.get(0).maxTa;												
-		String ddara = String.format("==== json ==== : ¾îÁ¦ÀÇ ³¯¾¾ÀÔ´Ï´Ù~ ¾îÁ¦ %s ÀÇ ÃÖÀú±â¿ÂÀº %s µµ ÃÖ°í ±â¿ÂÀº %s ¿´½À´Ï´Ù. ³¯¾¾¿´½À´Ï´Ù.", location, tMin, tMax);												
+		String ddara = String.format("==== json ==== : ì–´ì œì˜ ë‚ ì”¨ì…ë‹ˆë‹¤~ ì–´ì œ %s ì˜ ìµœì €ê¸°ì˜¨ì€ %s ë„ ìµœê³  ê¸°ì˜¨ì€ %s ì˜€ìŠµë‹ˆë‹¤. ë‚ ì”¨ì˜€ìŠµë‹ˆë‹¤.", location, tMin, tMax);												
 		log.info(ddara);												
 	}							
 	

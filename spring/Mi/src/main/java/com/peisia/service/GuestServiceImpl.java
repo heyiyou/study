@@ -17,13 +17,13 @@ import lombok.extern.log4j.Log4j;
 //@AllArgsConstructor
 public class GuestServiceImpl implements GuestService{
 
-	@Setter(onMethod_ = @Autowired)                       // »ó¼Ó ´ëÀÔ
-	private GuestMapper mapper;	                             //±¸Çö
+	@Setter(onMethod_ = @Autowired)                       // ìƒì† ëŒ€ì…
+	private GuestMapper mapper;	                             //êµ¬í˜„
 	
 	@Override
 	public ArrayList<GuestDto> getList(int currentPage) {
-		log.info("ºñÁö´Ï½º °èÃş===========");
-		int limitIndex = (currentPage-1) * 5;                    // ÆäÀÌÂ¡1 Ãß°¡µÊ ( 23~28 ÀüÃ¼)
+		log.info("ë¹„ì§€ë‹ˆìŠ¤ ê³„ì¸µ===========");
+		int limitIndex = (currentPage-1) * 5;                    // í˜ì´ì§•1 ì¶”ê°€ë¨ ( 23~28 ì „ì²´)
 		return mapper.getList(limitIndex);
 	}
 	

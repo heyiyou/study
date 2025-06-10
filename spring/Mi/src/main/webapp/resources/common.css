@@ -56,4 +56,9 @@ div {
 	text-align:center;
 }
 
+/* 이미지 왼쪽 정렬 */
+img.left {
+	float: left;
+	margin-right: 20px;
+	width: 100px;                       /* 이미지 크기 조절 */
 }

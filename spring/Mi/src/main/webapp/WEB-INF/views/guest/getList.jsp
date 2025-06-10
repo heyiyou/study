@@ -33,10 +33,12 @@
 
 <div class="center">
 	뭐임?${cp}
-	<a href="${cp}/guest/write">새글 쓰기</a>
+	<a href="${cp}/guest/write">새글 쓰기</a>  ========   
+	
+	<a href="${cp}/">홈페이지로 돌아가라!!</a>
 </div>
 <h1 class="center">
-	동물 LOVE
+	동물 LOVE다
 </h1>
 <%-- <c:forEach var="guest" items="${list}"> --%>
 <%--     <c:set var="bno" value="${guest.bno}" /> --%>
