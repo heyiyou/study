@@ -44,6 +44,13 @@
 </form>
 
 세션에 저장된 아이디: ${savedId}
+<hr>
+
+<a href="/api/cat">내 고양이 api 확인[브라우저에 json 찍기]</a>
+
+<hr>
+
+<a href="/weather/getCat">내 고양이 api 확인[정식 api 요청으로 확인]</a>
 
 </body>
 </html>
