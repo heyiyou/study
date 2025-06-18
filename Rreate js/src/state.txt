@@ -1,0 +1,104 @@
+import React, { useState } from 'react';
+import './App.css';
+
+/* 뽑을 카드 이름 & 희귀도 */
+const CARDS = [
+  'DarkMagician',
+  'BlueEyesWhiteDragon',
+  'RedEyesBlackDragon',
+  'Kuriboh',
+  'SummonedSkull',
+  'DarkMagicianGirl',
+];
+const TIERS = ['UR', 'SR', 'R', 'N'];                                 //  useState 배열
+const rand  = (max) => Math.floor(Math.random() * max);
+
+/* ───────── 카드 한 장 ───────── */
+function Card({ name, tier }) {
+  return (
+    <div className={`card ${name} ${tier}`}>
+      {/* CSS 에서 배경 처리, 라벨만 표시 */}
+      <span className="label">
+        {name.replace(/([A-Z])/g, ' $1').trim()} ― {tier}
+      </span>
+    </div>
+  );
+}
+
+/* ───────── 카드 묶음(단순 컨테이너) ───────── */
+function CardArea({ children }) {
+  return <div id="card_area">{children}</div>;
+}
+
+/* ───────── 메인 ───────── */
+export default function App() {
+  /* 뽑기로 얻은 카드(박스) */
+  const [box, setBox] = useState([]);
+
+  /* 파티 / 적 카드 예시(원하면 수정) */
+  const [party] = useState([
+    { name: 'DarkMagician', tier: 'UR' },
+    { name: 'Kuriboh', tier: 'N' },
+    { name: 'BlueEyesWhiteDragon', tier: 'SR' },
+  ]);
+  const [enemy] = useState([
+    { name: 'dorwheldkajfl ', tier: 'SR' },
+    { name: 'dorwheldkdhfmsWhrekfl', tier: 'SR' },
+     { name: 'dorwheldkdhlsWhrekfl', tier: 'SR' },
+    { name: 'dorwheldkdhfmsWHrvkf', tier: 'SR' },
+     { name: 'dorwheldkdhlsWhrvkf', tier: 'SR' },
+
+  ]);
+
+  /* 가챠 1회 */
+  const pull = () => {
+    const pick = CARDS[rand(CARDS.length)];
+    const tier = TIERS[rand(TIERS.length)];
+    setBox([...box, { name: pick, tier }]);
+  };
+
+  return (
+    <>
+      <h2>내 파티</h2>
+      <CardArea>
+        {/* 두 번째 예제처럼 “직접 하나씩 배치” */}
+        <Card name={party[0].name} tier={party[0].tier} />
+        <Card name={party[1].name} tier={party[1].tier} />
+        <Card name={party[2].name} tier={party[2].tier} />
+      </CardArea>
+
+
+
+      <h2>카드 박스</h2>
+      <button onClick={pull}>카드 뽑기 💳🎲</button>
+      <CardArea>
+        {/* 박스는 개수가 수시로 늘어나므로 map 사용 */}
+        {box.map((c, i) => (
+          <Card key={i} name={c.name} tier={c.tier} />
+        ))}
+      </CardArea>
+
+
+
+
+<dv>
+  <h1>
+    <b>듀얼VS</b>
+  </h1>
+  
+  
+</dv>
+
+
+
+      <h2>적 덱</h2>
+      <CardArea>
+        <Card name={enemy[0].name} tier={enemy[0].tier} />
+        <Card name={enemy[1].name} tier={enemy[1].tier} />
+        <Card name={enemy[2].name} tier={enemy[2].tier} />
+        <Card name={enemy[3].name} tier={enemy[3].tier} />
+        <Card name={enemy[4].name} tier={enemy[4].tier} />
+      </CardArea>
+    </>
+  );
+}
