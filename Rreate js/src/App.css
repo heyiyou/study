@@ -1,5 +1,5 @@
 /* ─────────── 기본 레이아웃 ─────────── */
-body{ background:#998; margin:0; font-family:sans-serif; color:#fff; }
+body{ background:rgb(137, 163, 230); margin:0; font-family:sans-serif; color:#fff; }
 h2   { margin:12px 0 4px; }
 
 #card_area{
@@ -41,6 +41,17 @@ h2   { margin:12px 0 4px; }
 .Kuriboh             { background-image:url('./Kuriboh.webp'); }
 .SummonedSkull       { background-image:url('./SummonedSkull.webp'); }
 .DarkMagicianGirl    { background-image:url('./DarkMagicianGirl.webp'); }
+
+
+
+.궁수       { background-image:url('./궁수.webp'); }
+.도적       { background-image:url('./도적.webp'); }
+.마법사     { background-image:url('./마법사.webp'); }
+.전사       { background-image:url('./전사.webp'); }
+.사제       { background-image:url('./사제.webp'); }
+
+
+
 .dorwheldkajfl    { background-image:url('./액조디아 머리.webp'); }
 .dorwheldkdhfmsWhrekfl    { background-image:url('./액조디아 오른쪽 다리.webp'); }
 .dorwheldkdhlsWhrekfl    { background-image:url('./액조디아 왼쪽 다리.webp'); }
