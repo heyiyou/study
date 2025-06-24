@@ -1,0 +1,41 @@
+Create Reatct App 
+프로젝트 생성 
+
+VSCode (Visual Studio Vode) 설치 
+
+
+생성
+터미널  ,  cmd 사용 
+
+npx create-react-app ( 여기괄호안에는 폴더 명을 넣으면 됨)                      npx create-react-app goodboy
+
+폴더 이동
+cd..      cd..      cd..       하면 들어가짐 ( 내가 생성이나 실행 하고 싶은 것들)     
+
+실행 
+npm start 
+
+
+src/
+  reportWebVitals.js
+  setupTests.js
+  App.test.js
+  logo.svg
+파일 내용 비우기:
+
+App.css, index.css: 내용만 삭제, 파일은 유지
+
+
+App.js
+import './App.css';
+
+function App() {
+  return (
+    <div>야옹</div>
+  );
+}
+
+export default App;
+
+ 이렇게 넣으면 야옹 이라고 뜸
+

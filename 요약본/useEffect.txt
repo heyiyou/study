@@ -1,0 +1,103 @@
+useEffect
+
+이 리액트 함수는  특정 시점에 어떤 일이 자동으로 실행되게 하고 싶을때
+
+예) 
+컴포넌트가 처음 화면에 나올 떄
+ 어떤 값이 바뀔 떄 
+화면에서 사라질떄 정리 작업 할 떄
+
+기본 문법
+import React, { useEffect } from 'react';
+
+useEffect(() => {
+  // 실행할 코드
+  return () => {
+    // 정리(clean up)할 코드 (선택)
+  };
+}, [의존값]);
+
+
+렌더링으로 실행 매 마다
+
+useEffext(() =>  {
+   console.log("화면이 그려졌다!");
+});
+
+이러면 콘솔에 "화면이 그려졌다!" 라고 찍힘
+
+
+
+useEffect(() => {
+  console.log("처음 등장했어요!");
+}, [ ]);
+
+[ ] 빈 배열이면 처음 한번 만 실행함 보통은 API호출 , 불러올떄 사용
+
+
+
+useEffect(() => {
+  console.log(`count가 ${count}로 바뀌었어요`);
+}, [count]);
+
+count 이런 식으로 실행 해라 느낌 
+
+
+
+타이머 응용 
+
+useEffect(() => {
+  const timer = setInterval(() => {
+    console.log("1초 지남!");
+  }, 1000);
+
+  return () => clearInterval(timer); // 컴포넌트 사라질 때 타이머 정리
+}, [ ]);
+
+
+예제)
+
+import React, { useState, useEffect } from 'react';
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log("count 값이 바뀜:", count);
+  }, [count]);
+
+  return (
+    <div>
+      <p>카운트: {count}</p>
+      <button onClick={() => setCount(count + 1)}>증가</button>
+    </div>
+  );
+}
+
+
+여긴 버튼을 추가해서  count 값이 바뀜"이 출력됨 
+
+
+// ❌
+useEffect(async () => {...});
+→ 대신 함수 안에서 async 처리
+
+//⭕
+useEffect(() => {
+  const fetchData = async () => {
+    // 비동기 처리
+  };
+  fetchData();
+}, []);
+
+
+
+
+실행 조건	             코드 예시	                         설명
+모든 렌더링	         useEffect(() => {...});          	모든 변경마다 실행
+처음 한 번	         useEffect(() => {...}, []);	        처음 마운트 시 한 번만
+특정 값 변화	         useEffect(() => {...}, [count]);	count 바뀔 때만 실행
+정리할 때             return () => {...}	                컴포넌트 사라질 때 정리
+
+
+

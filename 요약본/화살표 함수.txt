@@ -1,0 +1,86 @@
+화살표 함수 
+
+이제 function 대신해서   =>  를 사용함
+
+화살표 함수 방식 
+coust add = ( a , b ) => a + b ;
+
+
+혹시 몰라서 적어둠 매개변수란? 
+함수를 정의 할떄 외부에서 값을 전달받기 위해 함수 이름 몊에 괄호( ) 안에 적는 변수 
+function greet(name) { ... }
+                   이름 여기가 매개변수 
+
+매개변수 2개 이상
+coust add = ( a , b ) => a + b ;
+
+
+매개 변수 1개 
+coust spuare = x => x * x ;
+        괄호 생략 가능 (단 1개 일때)    
+
+
+매개 변수 없음 
+coust sayHello = () => "Hello";
+
+
+ 
+중괄호와 return
+
+한줄일 경우 return 생략 가능 
+const greet = name =>"안녕." + name;
+
+
+여러줄일 경우 중괄호 + return 사용 
+coust greet = name =>{
+  const message = "안녕, " +name;
+  return message;
+};
+
+
+
+리액트를 자주 쓰는 예시 
+const Cat = ( { name, age  } ) => {return <p>{age}살 {name}di</p>;
+};
+                                       ||
+                                       V
+
+coust Cat = ( { name, age } )  =<p>{age}살 {name}야</p>;
+
+
+
+this란?
+
+현재 실행중인 코드가 속해져있는객체  
+함수안에 this를 쓰면 누가 이함수를 불렀는지에 따라 의미가 달라짐
+
+
+ 전통 함수 (function 사용)
+
+const obj = {
+    name: " 고양이",
+    sayName : function {
+     console.log(this.name);
+   }      
+}:
+
+obj.sayName( );    
+
+
+여기서 this는 obj 객체를 가리킴
+
+sayName이 obj를 통해 호출되었기 때문
+
+
+이건 내 생각인데 this는 왠만하면 화살표를 쓰지 않도록 한다 고정이 되기 떄문에
+결론은 this 함수가 있으면 안쓰는게 좋음
+ 
+
+
+
+
+
+
+
+
+

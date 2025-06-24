@@ -1,0 +1,50 @@
+props
+
+
+이건 부모 컴포넌트가 자식 컴포넌트쪽으로 테이터 전달하는 방식 
+
+
+ 부모  ->  자식 ( 일반통행)
+형태는 HTMI 속성처렁 <Cat name =" 야옹이" />
+자식 컴포넌트는 props를 통해서 값을 받을수 있고 자식은 직접 값을 수정 불가능( 구제불능 )
+
+
+
+App.js (부모 컴포넌트)
+function App( ) {
+  return(
+   <div>
+      <cat name = "워윅"  age = "3" />
+  </div>
+);
+}
+ 
+
+
+
+Cat.js (자식 컴포넌트)
+function Cat (props) {
+    return(
+        <p>안녕 ! 난{props.age}살  {props.name}야 </p>
+    );
+}
+
+export default Cat;
+
+ 출력  :  안녕 난 3살 워윅이야
+
+
+
+
+function Cat({  name, age  }) {
+   return <p>안녕! 나는 {age}살 {name}야</p>
+}
+→ props.name, props.age 대신 바로 name, age 사용 가능
+참고로 Cat.js안에 사용하는거임 
+
+
+
+
+
+
+
