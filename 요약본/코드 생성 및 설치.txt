@@ -7,7 +7,11 @@ VSCode (Visual Studio Vode) 설치
 생성
 터미널  ,  cmd 사용 
 
-npx create-react-app ( 여기괄호안에는 폴더 명을 넣으면 됨)                      npx create-react-app goodboy
+npx create-react-app ( 여기괄호안에는 폴더 명을 넣으면 됨)                      npx create-react-app goodboy      
+
+📌 3. axios 설치하기
+npm install axios
+
 
 폴더 이동
 cd..      cd..      cd..       하면 들어가짐 ( 내가 생성이나 실행 하고 싶은 것들)     

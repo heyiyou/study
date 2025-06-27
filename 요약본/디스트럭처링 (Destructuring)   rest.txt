@@ -1,0 +1,117 @@
+디스트럭처링 (Destructuring)   rest 
+
+객체나 배열에서 원하는 값을 한줄로 꺼내서 변수로 저장하는 문법
+
+구조 
+
+coust user = {
+name : "지운", 
+age : 27,
+city : "서울"
+};
+
+const { name, age } = user ;
+
+console.log( name ) ;   // 지운
+console.log( age ) ;   // 27
+console.log( city ) ;   // 서울 
+
+
+원래 방식
+const name = person.name;
+const age = person.age;
+const city = person.city;
+
+
+디스트럭처링 방식     이게 중점일듯 
+const { name, age, city } = person ;
+
+
+
+변수명 바꾸기 ( 별명 )
+ const { name : fullName , age : userAge  } = person ;
+
+console.log(fullName); // 지운
+console.log(userAge);  // 27
+
+
+rest 문법 활용 
+이건 나머지 속성을 몰아서 보이게 하는거 
+예)
+const ( name , ...rest } = person;
+
+console.log(name);  // 지운 
+console.log(rest);    //  { age: 27 , city ; "서울" }
+이코드는 name 뺴고 rest 객체를 다 부름
+
+
+배열 디스트럭처링 Array Destucturing
+
+const numbers = [1, 2, 3, 4] ;      //위에 적어두고 일단 구역 선정한거라고 생각해 
+
+
+
+배열 디스트럭처링 + rest 문법 
+const [ first, second ] = numbers ;
+console.log( first ) ;         // 1
+console.log( others ) ;     //  [ 2, 3, 4 ]                                  // 여기서  others는 rest문법임! 
+
+
+
+
+함수 매개변수 디스트럭처링 
+
+props 받을떄 
+fuction Greeting({ name, age } ) {
+ return <p>{ name } 님은 ( age ) 살입니다.</p>                             부모
+}                                                                                                ||
+                                                                                                 V
+<Greeting name ="지운" age = {23} />                                         자식
+
+
+
+
+
+ 문법	                                              설명	                         예시
+구조 분해 할당 (디스트럭처링)	   값을 "꺼냄"	       const { name } = obj
+스프레드 연산자 (...)	                   값을 "펼침"	       { ...obj }, [...arr]
+rest 문법 (...)                                  값을 "모음"             const { a, ...rest } = obj
+
+
+
+
+
+
+
+동적 속성 
+key 키를 변수나 계산된 값으로 정할수 있는 문법 
+
+
+const key = " name" ;
+const person = {
+{ key } :  "지운 "
+} ;
+
+console.log( person.name ) ;        // "지운"
+이렇게 되면 [key]는 "name" 되고 
+ 결과적으로  { name : "지운" } 임 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
