@@ -7,7 +7,10 @@
 
 <html>
 <head>
-	<title>Home</title>
+
+<title>Home</title>
+<link href="${cp}/resources/static/css/main.b9fc1e64.css" rel="stylesheet">	
+
 </head>
 <body>
 <h1>
@@ -51,6 +54,13 @@
 <hr>
 
 <a href="/weather/getCat">내 고양이 api 확인[정식 api 요청으로 확인]</a>
+
+<!-- React 앱이 붙을 자리 -->
+<div id="root"></div>
+
+<!-- React 앱 실행 -->
+    <script defer src="${cp}/resources/static/js/main.3c801d0b.js"></script>
+
 
 </body>
 </html>
