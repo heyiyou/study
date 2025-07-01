@@ -1,0 +1,11 @@
+/* ─────────── 기본 레이아웃 ─────────── */
+body{ background:#998; margin:0; font-family:sans-serif; color:#fff; }
+h2   { margin:12px 0 4px; }
+
+#card_area{
+  display:flex;
+  flex-wrap:wrap;
+  min-height:316px;
+  padding:4px;
+  border:4px solid gray;
+}

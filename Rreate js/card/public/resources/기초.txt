@@ -1,0 +1,162 @@
+import './App.css';
+function App() {
+  var cat='헬로키티월드! (변수로 찍었음)';
+  return (
+    <div className="App">
+      오늘은 {new Date().toLocaleDateString()}
+      <hr></hr>
+      <LocaleDateExample />
+       <hr></hr>
+      <Dice/>
+       <hr></hr>
+      <Apps/>
+      <hr></hr>
+      <Appss/>
+       <hr></hr>
+         <Fruits />
+        <SimpleList />
+
+
+    </div>
+  );
+}
+
+
+function LocaleDateExample() {
+  const today = new Date();
+
+  // 기본 'ko-KR' 형식 (한국 기준)
+  const formattedDate = today.toLocaleDateString('ko-KR', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  });
+
+  return (
+    <div>
+      <p>오늘은 {formattedDate}</p>
+    </div>
+  );
+}
+
+
+
+function Dice() {
+  var r=Math.floor(Math.random()*10)+1;
+  return (
+    <div>
+      <p>오늘의 행운의 숫자는 {r}</p>
+    </div>
+  );
+}
+
+function Apps() {
+  var cat='헬로키티월드! (변수로 찍었음)';
+  return (
+    <div className="App">
+      {cat}
+      <Cat />
+      <Cat />
+      <Dog />
+    </div>
+  );
+}
+
+function Cat(){
+  return <p>야옹</p>
+}
+
+function Dog(){
+  return(
+    <p>멍</p>
+  )
+}
+
+
+
+
+
+
+
+
+function Appss() {
+
+  var ns = [1, 1, 1, 1, 1, 1];
+  // var ns = Array(6).fill(0); // 0으로 채운 6개의 배열
+
+  var r = ns.map(() => (Math.floor(Math.random()*45)+1)+' ');  
+ 
+  // Array.from()을 사용해 6개의 숫자(0, 1, 2, ...)로 배열을 생성
+  // var r = Array.from({ length: 6 }, () => Math.floor(Math.random() * 45) + 1 + ' ');  
+
+  return (
+    <div className="App">
+      {r}
+       <br/>
+      <button onClick={() => alert('버튼을 눌렀어요!')}>클릭</button>
+    </div>
+  );
+}
+
+//function random(){
+//return Math.floor(Math.random() * 45) + 1;}
+
+//function App() {
+
+// var ns = [1, 1, 1, 1, 1, 1];
+  // var ns = Array(6).fill(0); // 0으로 채운 6개의 배열
+  
+//for(var i = 0; i < 6; i++) {                                                        //이 코드는 옛날 기반으로도 가능함 로또! 
+ // ns[i] = random() + ' '; // 1부터 45 사이의 랜덤 숫자를 생성하고 문자열로 변환}
+
+
+//  return (
+ //   <div className="App">
+ //     {ns}
+ //   </div>);      }
+
+
+
+
+
+function Fruits() {
+  // 출력할 배열
+  const fruits = ['사과', '바나나', '귤'];
+
+  return (
+    <div>
+      <h2>과일 종류</h2>
+      <ul>
+        {/* 배열의 각 요소를 직접 출력 */}
+        <li>{fruits}</li>
+      </ul>
+    </div>
+  );
+}
+function SimpleList() {
+  var animals = [
+    <li>고양이</li>
+    ,<li>개</li>
+    ,<li>너굴맨</li>
+  ];
+
+  return (
+    <div>
+      <h2>동물들</h2>
+      <ul>
+        {animals}
+      </ul>
+    </div>
+  );
+}
+
+
+
+
+
+
+
+
+
+
+export default App;

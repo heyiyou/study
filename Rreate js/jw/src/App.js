@@ -104,7 +104,7 @@ function App() {
         {my.map((character, index) => (
           <Card key={index} job={character.job} grade={character.grade} 
             xxx={()=>cat(index)}
-          />
+          />//카드 1뽑 by api
         ))}
       </CardArea>
       <h2>적</h2>
@@ -144,9 +144,3 @@ export default App;
 
 
 
-
-
-
-
-// 처음부터 만들떄 터미널에 입력하면 됨 
-//

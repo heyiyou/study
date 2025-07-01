@@ -1,0 +1,33 @@
+/* App.css */
+
+/* 기본 폰트 및 색상 설정 */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* 내비게이션 바 스타일 */
+.navbar {
+  padding: 12px 20px;
+  background-color: #ccc;
+  display: flex;
+  gap: 20px;
+}
+
+/* 링크 스타일 */
+.navbar a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+/* 페이지 콘텐츠 기본 여백 */
+.page-container {
+  padding: 20px;
+}
