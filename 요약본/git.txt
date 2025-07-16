@@ -1,0 +1,128 @@
+git  
+
+
+설치        
+0.      ⭐⭐Git 설치
+ 사이트: https://git-scm.com/downloads
+
+ 설치 파일 예: Git-2.40.0-64-bit.exe
+
+ 설치 후 Git Bash 또는 터미널 사용 가능
+
+
+
+1.    폴더 만들고 이동하기
+cd /c          # C드라이브로 이동
+mkdir 00_a     # 00_a라는 폴더 만들기
+cd 00_a        # 그 폴더로 들어가기
+pwd            # 현재 경로 확인
+
+
+
+2.    Git 저장소 초기화하기
+git init 저장소 만들기 
+
+.git/
+실행 했을때 뒤에 이거 붇어있으면 됨 
+
+
+
+ 3.    vi로 파일 만들기
+vi b.txt    # vi 에디터 실행
+# i 또는 a 를 눌러 편집 모드로 변경
+# 고양이 같은 내용 입력
+# ESC → :x → 엔터 (저장하고 종료)
+
+
+
+4.    파일 상태 확인 
+ls               #폴더 안 파일 보기 
+git status     # 이 추적 중인 파일 상태 보기(b.txt가 빨간색으로 지정 하는 느낌) 
+
+
+
+
+5.   파일 추가/삭제/취소
+git add .                     #모든 변경된 파일을 스테이징에 추가 
+git reset .                    #스테이징에서 다시 빼기 
+
+rm b.txt                      # 실제로 파일 삭제
+git status                    # Git은 삭제된 것도 추적함
+git rm b.txt                 # Git 스테이징에서 삭제 사실도 반영
+📝 rm은 실제 파일 삭제, git rm은 Git 기록 반영 삭제
+
+
+
+6. 커밋하기 
+git add .                                       # 변경사항 다시 추가
+git commit -m "이니셜 커밋"           # 기록 남기기
+git log                                         # 커밋 내역 확인
+
+
+
+
+7  -  8 단계 브랜치 ( branch )   만들어서 전화 
+
+
+git branch cat         # cat이라는 브랜치 만들기
+git checkout cat       # 그 브랜치로 전환
+
+vi c.txt               # 파일 만들기
+git add .
+git commit -m "cat 전용 파일 추가"
+git checkout master    # 다시 마스터 브랜치로 전환
+ls                     # master에는 c.txt 없음 → 브랜치 히스토리 다름
+
+ branch 는 역사를 갖는다 한마디로 부산안에 동래로 지정해서 그안의 틀을 구성 
+
+ 
+
+9단계     GitHub SSH 연동
+
+SSH 키 생성 (생략 가능)
+
+공개키 GitHub 등록 
+
+GitHub에서 저장소 만들기
+
+
+git remote add ori git@github.com:YOUR_ID/REPO.git
+git push ori maste
+
+
+처음에 연결 할때 yes 입력야해함    y 만도 안됨 
+
+
+
+10 GitHub 에서 클론 하기 
+
+1    A 폴더에서 git init → GitHub에 push
+
+2   다른 폴더에서 git clone
+
+3   파일 수정하고 push
+
+4   A 폴더로 돌아가 git pull 해서 반영 확인
+
+
+
+
+
+# 1. 폴더 진입 및 Git 초기화
+cd /c/myfolder
+git init
+
+# 2. 작업 후 파일 추가 & 커밋
+git add .
+git commit -m "메시지"
+
+# 3. GitHub 연동
+git remote add origin 주소
+git push -u origin master
+
+# 4. 클론 받기
+git clone 주소 ./  # 현재 폴더에 받기
+
+# 5. 이후 pull/push 반복
+git pull
+git push

@@ -1,0 +1,47 @@
+package com.cal.controller;
+
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.cal.dto.BoardDto;
+import com.cal.service.BoardService;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+@RestController
+@RequestMapping("/board/*")
+@AllArgsConstructor
+public class BoardController {
+
+  private BoardService service;
+
+  @GetMapping("/list")
+  public ResponseEntity<List<BoardDto>> getBoardList() {
+    List<BoardDto> boards = service.getBoardList();
+    return ResponseEntity.ok(boards);
+  }
+  
+  @GetMapping("/detail/{id}")
+  public ResponseEntity<BoardDto> getBoard(@PathVariable int id) {
+    BoardDto board = service.getBoardById(id);
+    if (board == null) {
+      return ResponseEntity.notFound().build();
+    }
+    return ResponseEntity.ok(board);
+  }
+
+  @PutMapping("/update/{id}")
+  public ResponseEntity<String> updateBoard(@PathVariable int id, @RequestBody BoardDto dto) {
+    service.updateBoard(id, dto);
+    return ResponseEntity.ok("게시글 수정 완료");
+  }
+}
