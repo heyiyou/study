@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import styles from './BoardEdit.module.css';
 
 export default function BoardEdit() {
   const { id } = useParams();
@@ -12,12 +13,6 @@ export default function BoardEdit() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
 
-  // 디버깅 로그
-  useEffect(() => {
-    console.log("BoardEdit 렌더링됨, id:", id);
-  }, [id]);
-
-  // 기존 게시글 정보 가져오기
   useEffect(() => {
     axios.get(`http://localhost:8080/cal/board/detail/${id}`)
       .then(res => {
@@ -28,14 +23,13 @@ export default function BoardEdit() {
       })
       .catch(err => {
         console.error(err);
-        setMessage('❌ 게시글 로드 실패');
+        alert('❌ 게시글 로드 실패');
       });
   }, [id]);
 
-  // 수정 요청
   const handleUpdate = () => {
     if (!title.trim() || !content.trim()) {
-      alert('제목과 내용을 모두 입력하세요!');
+      alert('⚠️ 제목과 내용을 모두 입력하세요!');
       return;
     }
 
@@ -43,19 +37,19 @@ export default function BoardEdit() {
     setLoading(true);
 
     axios.put(`http://localhost:8080/cal/board/update/${id}`, updatedBoard)
-      .then(res => {
-        alert(res.data);
-        navigate(`/board/detail/${id}`, { replace: true });// 수정 완료 후 상세보기 페이지로 이동 (원하는 경로로 바꿔도 OK)
+      .then(() => {
+        alert('✔️ 게시글이 수정되었습니다!');
+        navigate(`/board/detail/${id}`, { replace: true });
       })
       .catch(err => {
         console.error(err);
-        setMessage('❌ 수정 실패');
+        alert('❌ 수정 실패');
       })
       .finally(() => setLoading(false));
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <h2>게시글 수정</h2>
       {loading && <p>수정 중...</p>}
       {message && <p>{message}</p>}
@@ -71,13 +65,11 @@ export default function BoardEdit() {
       <br />
 
       <label>작성자:
-        <input value={writer} onChange={(e) => setWriter(e.target.value)}
-                             //readOnly 고정
-         />
+        <input value={writer} readOnly />
       </label>
       <br />
 
-      <button onClick={handleUpdate}>수정하기</button>
+      <button className={styles.updateButton} onClick={handleUpdate}>수정하기</button>
     </div>
   );
 }

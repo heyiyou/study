@@ -10,7 +10,6 @@ export default function ProductList() {
   const [category, setCategory] = useState('');                // 카테고리
   const categories = ["전체", "도시락", "음료수", "과자", "아이스크림"];
   const [sort, setSort] = useState('new');
-  //const [sortOptions, setSortOptions] = useState(['new', 'old', 'recommend']); 고민중 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -86,11 +85,13 @@ export default function ProductList() {
             className={styles.item}
             onClick={() => navigate(`/${p.id}`)}
           >
+            {p.imageUrl ? (
             <img
               src={p.imageUrl}
               alt={p.name}
               className={styles.itemImage}
             />
+            ): null}
             <div className={styles.itemContent}>
               <div className={styles.itemName}>{p.name}</div>
               <div className={styles.itemPrice}>{p.price}원</div>
