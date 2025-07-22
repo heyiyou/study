@@ -22,26 +22,34 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class BoardController {
 
-  private BoardService service;
+	private BoardService service;
 
-  @GetMapping("/list")
-  public ResponseEntity<List<BoardDto>> getBoardList() {
-    List<BoardDto> boards = service.getBoardList();
-    return ResponseEntity.ok(boards);
-  }
-  
-  @GetMapping("/detail/{id}")
-  public ResponseEntity<BoardDto> getBoard(@PathVariable int id) {
-    BoardDto board = service.getBoardById(id);
-    if (board == null) {
-      return ResponseEntity.notFound().build();
-    }
-    return ResponseEntity.ok(board);
-  }
+	// 종훈님
+	@RequestMapping("/register")
+	public void boardRegister(@RequestBody BoardDto dto) {
+		service.boardRegister(dto);
+		log.info("쓴 리뷰: " + dto);
+	}
 
-  @PutMapping("/update/{id}")
-  public ResponseEntity<String> updateBoard(@PathVariable int id, @RequestBody BoardDto dto) {
-    service.updateBoard(id, dto);
-    return ResponseEntity.ok("게시글 수정 완료");
-  }
+	// 나
+	@GetMapping("/list")
+	public ResponseEntity<List<BoardDto>> getBoardList() {
+		List<BoardDto> boards = service.getBoardList();
+		return ResponseEntity.ok(boards);
+	}
+
+	@GetMapping("/detail/{id}")
+	public ResponseEntity<BoardDto> getBoard(@PathVariable int id) {
+		BoardDto board = service.getBoardById(id);
+		if (board == null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(board);
+	}
+
+	@PutMapping("/update/{id}")
+	public ResponseEntity<String> updateBoard(@PathVariable int id, @RequestBody BoardDto dto) {
+		service.updateBoard(id, dto);
+		return ResponseEntity.ok("게시글이 성공적으로 수정되었습니다."); // ← 메시지 반환!
+	}
 }

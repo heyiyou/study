@@ -1,7 +1,5 @@
 package com.cal.dto;
 
-import java.time.LocalDateTime;
-
 import lombok.Data;
 
 @Data
@@ -10,7 +8,7 @@ public class BoardDto {
    private String title;
    private String content;
    private String writer;
-   private LocalDateTime createTime;
+   private String createTime;
    private int productId;
    
    

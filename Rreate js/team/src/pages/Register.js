@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+
+
 export default function Register() {
   const [form, setForm] = useState({
     id: '',
@@ -65,6 +67,7 @@ export default function Register() {
             name="name"
             value={form.name}
             onChange={handleChange}
+            required
           />
         </div>
         <div>
@@ -74,6 +77,7 @@ export default function Register() {
             name="email"
             value={form.email}
             onChange={handleChange}
+            required
           />
         </div>
         <button type="submit">회원가입</button>

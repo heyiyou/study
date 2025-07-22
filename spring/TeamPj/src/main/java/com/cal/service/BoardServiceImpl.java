@@ -15,6 +15,13 @@ import lombok.extern.log4j.Log4j;
 public class BoardServiceImpl implements BoardService {
 	  private BoardMapper mapper;
 	  
+	  //종훈님
+	  @Override
+	  public void boardRegister(BoardDto dto) {
+		mapper.boardRegister(dto);
+	  }
+	  
+	  //나
 	   @Override
 	  public List<BoardDto> getBoardList() {
 	    return mapper.selectAllBoards();
