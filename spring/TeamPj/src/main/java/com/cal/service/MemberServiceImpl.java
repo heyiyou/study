@@ -27,8 +27,21 @@ public class MemberServiceImpl implements MemberService {
             System.out.println("입력한 패스워드: " + member.getPassword());
         }
         if (dbMember != null && dbMember.getPassword().equals(member.getPassword())) {
-            return dbMember.getUsername();
+        	return dbMember.getNickname();
         }
         return null;
     }
+    
+    @Override
+    public boolean isUsernameTaken(String username) {
+        return mapper.findByUsername(username) != null;
+    }
+    
+    
+    @Override
+    public boolean isNicknameTaken(String nickname) {
+        return mapper.findByNickname(nickname) != null;
+    }
+    
+    
 }

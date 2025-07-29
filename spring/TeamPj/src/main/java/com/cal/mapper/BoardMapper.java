@@ -1,16 +1,16 @@
-package com.cal.mapper; 
+package com.cal.mapper;
+
 import java.util.List;
 
-import com.cal.dto.BoardDto;
- 
+import org.apache.ibatis.annotations.Mapper;
 
+import com.cal.dto.BoardDto;
+
+@Mapper
 public interface BoardMapper {
-	
-	
-	//종훈님//
 	public void boardRegister(BoardDto dto);
-//내가 한 부분 	
-int updateBoard(BoardDto dto);
-  BoardDto selectBoardById(int id);
-  List<BoardDto> selectAllBoards();
+	int updateBoard(BoardDto dto);
+	BoardDto selectBoardById(int id);
+	List<BoardDto> selectAllBoards();
+    void delete(int id);// 게시글 삭제
 }

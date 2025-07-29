@@ -5,13 +5,18 @@
 
 <mapper namespace="com.cal.mapper.MemberMapper">
 
-  <insert id="insertMember" parameterType="com.cal.dto.MemberDto">
-    INSERT INTO member (username, password, name, email)
-    VALUES (#{username}, #{password}, #{name}, #{email})
-  </insert>
+	<insert id="insertMember" parameterType="com.cal.dto.MemberDto">
+		INSERT INTO member (username, password, name, nickname, email)
+		VALUES (#{username}, #{password}, #{name}, #{nickname}, #{email})
+	</insert>
 
-  <select id="findByUsername" parameterType="String" resultType="com.cal.dto.MemberDto">
-    SELECT * FROM member WHERE username = #{username}
-  </select>
+	<select id="findByUsername" parameterType="String"
+		resultType="com.cal.dto.MemberDto">
+		SELECT * FROM member WHERE username = #{username}
+	</select>
+	
+	<select id="findByNickname" parameterType="String" resultType="com.cal.dto.MemberDto"><!-- 닉네임 중복 -->
+        SELECT * FROM member WHERE nickname = #{nickname}
+    </select>
 
 </mapper>

@@ -47,6 +47,7 @@ public class ProductServiceImpl implements ProductService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	 @Override
 	   public ProductDto selectProductById(int id) {
 	       // 일단 DB 말고 하드코딩된 데이터로 연결 확인
@@ -62,3 +63,5 @@ public class ProductServiceImpl implements ProductService {
 	    }
 
 	}
+	
+	

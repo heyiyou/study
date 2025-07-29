@@ -5,4 +5,5 @@ import com.cal.dto.MemberDto;
 public interface MemberMapper {
     void insertMember(MemberDto member);
     MemberDto findByUsername(String username);
+	Object findByNickname(String nickname);
 }
