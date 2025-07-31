@@ -41,14 +41,14 @@ public class MemberController {
 			@RequestParam(value = "saveId", required = false) String saveId, HttpServletResponse response) {
 		log.info("==== 로그인 저장 체크: " + saveId);
 		log.info("==== 로그인 API 호출됨 ====");
-		log.info("Request username: " + m.getUsername());
+		log.info("Request id: " + m.getId());
 		log.info("Request password: " + m.getPassword());
 
 		String nickname = service.login(m);
 		if (nickname != null) {
 			session.setAttribute("loggedInUser", nickname);
 			if ("on".equals(saveId)) {
-				Cookie c = new Cookie("cookieSavedId", m.getUsername()); // 여기 로그인 쿠키
+				Cookie c = new Cookie("cookieSavedId", m.getId()); // 여기 로그인 쿠키
 				c.setPath("/");
 				c.setHttpOnly(true);
 				c.setMaxAge(60 * 60 * 24 * 30);
@@ -76,54 +76,85 @@ public class MemberController {
 	public ResponseEntity<String> loginStatus(HttpSession session) {
 		String loggedInUser = (String) session.getAttribute("loggedInUser");
 		if (loggedInUser != null) {
-			return ResponseEntity
-					.ok()
-					.header("Content-Type", "text/plain; charset=UTF-8") // charset 지정!
+			return ResponseEntity.ok().header("Content-Type", "text/plain; charset=UTF-8") // charset 지정!
 					.body("현재 로그인한 사용자: " + loggedInUser);
 		} else {
-			return ResponseEntity.status(401)
-	                .header("Content-Type", "text/plain; charset=UTF-8")
-					.body("로그인하지 않음");
+			return ResponseEntity.status(401).header("Content-Type", "text/plain; charset=UTF-8").body("로그인하지 않음");
 		}
 	}
 
-	@GetMapping("/check-username")
-	public ResponseEntity<String> checkUsername(@RequestParam String username) {
-	    boolean exists = service.isUsernameTaken(username);
+	@GetMapping("/check-id")
+	public ResponseEntity<String> checkId(@RequestParam String id) {
+		boolean exists = service.isIdTaken(id);
 
-	    if (exists) {
-	        return ResponseEntity
-	                .status(409)
-	                .header("Content-Type", "text/plain; charset=UTF-8")
-	                .body("이미 사용 중인 아이디입니다.");
-	    } else {
-	        return ResponseEntity
-	                .ok()
-	                .header("Content-Type", "text/plain; charset=UTF-8")
-	                .body("사용 가능한 아이디입니다.");
-	    }
+		if (exists) {
+			return ResponseEntity.status(409).header("Content-Type", "text/plain; charset=UTF-8")
+					.body("이미 사용 중인 아이디입니다.");
+		} else {
+			return ResponseEntity
+					.ok()
+					.header("Content-Type", "text/plain; charset=UTF-8")
+					.body("사용 가능한 아이디입니다.");
+		}
 	}
-	
-	
+
 	@GetMapping("/check-nickname")
 	public ResponseEntity<String> checkNickname(@RequestParam String nickname) {
-	    boolean exists = service.isNicknameTaken(nickname); //isNicknameTaken = is → **"인지?+nickname+Taken 사용중이다
+		boolean exists = service.isNicknameTaken(nickname); // isNicknameTaken = is → **"인지?+nickname+Taken 사용중이다
 
-	    if (exists) {
-	        return ResponseEntity
-	                .status(409)
-	                .header("Content-Type", "text/plain; charset=UTF-8") 
-	                .body("이미 사용 중인 닉네임입니다.");
-	    } else {
-	        return ResponseEntity
-	                .ok()
-	                .header("Content-Type", "text/plain; charset=UTF-8") 
-	                .body("사용 가능한 닉네임입니다.");
-	    }
+		if (exists) {
+			return ResponseEntity.status(409)
+					.header("Content-Type", "text/plain; charset=UTF-8")
+					.body("이미 사용 중인 닉네임입니다.");
+		} else {
+			return ResponseEntity
+					.ok()
+					.header("Content-Type", "text/plain; charset=UTF-8")
+					.body("사용 가능한 닉네임입니다.");
+		}
 	}
 
+	@GetMapping("/check-email")
+	public ResponseEntity<String> checkEmail(@RequestParam String email) {
+		boolean exists = service.isEmailTaken(email); // MemberService에 구현해야 함
 
+		if (exists) {
+			return ResponseEntity.status(409)
+					.header("Content-Type", "text/plain; charset=UTF-8")
+					.body("이미 사용 중인 이메일입니다.");
+		} else {
+			return ResponseEntity
+					.ok()
+					.header("Content-Type", "text/plain; charset=UTF-8")
+					.body("사용 가능한 이메일입니다.");
+		}
+	}
+
+	@PostMapping("/update")
+	public ResponseEntity<String> update(@RequestBody MemberDto dto) {
+	    boolean result = service.updateMember(dto);
+	    if (result) {
+	        return ResponseEntity
+	                .ok()
+	                .header("Content-Type", "text/plain; charset=UTF-8")
+	                .body("회원정보가 수정되었습니다");
+	    } else {
+	        return ResponseEntity
+	                .status(500)
+	                .header("Content-Type", "text/plain; charset=UTF-8")
+	                .body("회원정보 수정 실패");
+	    }
+	}
 	
+	@GetMapping("/find-by-id")
+	public ResponseEntity<MemberDto> findById(@RequestParam String id) {
+	    MemberDto member = service.findById(id);
+
+	    if (member != null) {
+	        return ResponseEntity.ok(member);
+	    } else {
+	        return ResponseEntity.status(404)
+	        		.build(); // 찾을 수 없음
+	    }
+	}
 }
-
-
