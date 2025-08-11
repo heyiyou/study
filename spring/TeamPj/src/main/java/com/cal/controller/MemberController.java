@@ -41,12 +41,11 @@ public class MemberController {
 			@RequestParam(value = "saveId", required = false) String saveId, HttpServletResponse response) {
 		log.info("==== 로그인 저장 체크: " + saveId);
 		log.info("==== 로그인 API 호출됨 ====");
-		log.info("Request id: " + m.getId());
-		log.info("Request password: " + m.getPassword());
-
+		
 		String nickname = service.login(m);
-		if (nickname != null) {
-			session.setAttribute("loggedInUser", nickname);
+		 if (nickname != null) {
+		        session.setAttribute("loginUserId", m.getId());    
+		        session.setAttribute("loggedInUser", nickname);     
 			if ("on".equals(saveId)) {
 				Cookie c = new Cookie("cookieSavedId", m.getId()); // 여기 로그인 쿠키
 				c.setPath("/");
