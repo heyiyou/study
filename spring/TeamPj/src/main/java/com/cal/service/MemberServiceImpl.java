@@ -42,7 +42,7 @@ public class MemberServiceImpl implements MemberService {
     public boolean isNicknameTaken(String nickname) {
         return mapper.findByNickname(nickname) != null;
     }
-
+    @Override
     public boolean isEmailTaken(String email) {
         return mapper.findByEmail(email) != null;
     }

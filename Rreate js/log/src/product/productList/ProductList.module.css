@@ -1,0 +1,70 @@
+.container {
+  padding: 10px;
+}
+
+.tabs {
+  margin-bottom: 40px;
+}
+
+.tabButton {
+  margin-left: 200px;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+}
+
+.tabButton.active {
+  background: #333;
+  color: white;
+  font-weight: bold;
+}
+
+.search input {
+  padding: 8px;
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.sortContainer {
+  margin: 10px 0;
+}
+
+.sortButton {
+  margin-right: 10px;
+  padding: 6px 14px;
+  border: 1px solid #aaa;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.sortButton:hover {
+  background-color: #e0e0e0;
+}
+
+.sortButton.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+
+
+/* ✅ 페이지네이션 전용 스타일 */
+.pageButton {
+  background-color: white;
+  color: black;
+  border: 1px solid gray;
+  padding: 6px 10px;
+  margin: 0 2px;
+  cursor: pointer;
+}
+
+.activePageButton {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+  font-weight: bold;
+}

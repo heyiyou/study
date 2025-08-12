@@ -44,7 +44,7 @@ public class MemberController {
 		
 		String nickname = service.login(m);
 		 if (nickname != null) {
-		        session.setAttribute("loginUserId", m.getId());    
+		    
 		        session.setAttribute("loggedInUser", nickname);     
 			if ("on".equals(saveId)) {
 				Cookie c = new Cookie("cookieSavedId", m.getId()); // 여기 로그인 쿠키
@@ -75,10 +75,14 @@ public class MemberController {
 	public ResponseEntity<String> loginStatus(HttpSession session) {
 		String loggedInUser = (String) session.getAttribute("loggedInUser");
 		if (loggedInUser != null) {
-			return ResponseEntity.ok().header("Content-Type", "text/plain; charset=UTF-8") // charset 지정!
+			return ResponseEntity
+					.ok()
+					.header("Content-Type", "text/plain; charset=UTF-8") // charset 지정!
 					.body("현재 로그인한 사용자: " + loggedInUser);
 		} else {
-			return ResponseEntity.status(401).header("Content-Type", "text/plain; charset=UTF-8").body("로그인하지 않음");
+			return ResponseEntity.status(401)
+					.header("Content-Type", "text/plain; charset=UTF-8")
+					.body("로그인하지 않음");
 		}
 	}
 
@@ -130,9 +134,13 @@ public class MemberController {
 	}
 
 	@PostMapping("/update")
-	public ResponseEntity<String> update(@RequestBody MemberDto dto) {
+	public ResponseEntity<String> update(@RequestBody MemberDto dto, HttpSession session) {
 	    boolean result = service.updateMember(dto);
 	    if (result) {
+	    	 MemberDto updated = service.findById(dto.getId());
+	         if (updated != null) {
+	             session.setAttribute("loggedInUser", updated.getNickname());
+	         }
 	        return ResponseEntity
 	                .ok()
 	                .header("Content-Type", "text/plain; charset=UTF-8")
@@ -145,6 +153,8 @@ public class MemberController {
 	    }
 	}
 	
+	
+
 	@GetMapping("/find-by-id")
 	public ResponseEntity<MemberDto> findById(@RequestParam String id) {
 	    MemberDto member = service.findById(id);
