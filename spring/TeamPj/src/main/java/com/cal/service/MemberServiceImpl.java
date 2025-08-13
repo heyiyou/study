@@ -65,5 +65,39 @@ public class MemberServiceImpl implements MemberService {
 	    return mapper.findById(id);
 	}
 	
-    
+	@Override
+	public String findIdByNameAndEmail(String name, String email) {
+	    return mapper.findIdByNameEmail(name, email);
+	}
+
+	
+	
+	@Override
+	public String issueTempPassword(String id, String email) {
+	    MemberDto user = mapper.findById(id);
+	    if (user == null) return null;
+	    if (user.getEmail() == null || !user.getEmail().equalsIgnoreCase(email)) return null;
+
+	    String tempPw = genTempPassword(10); // 임시 비번 길이
+	    int updated = mapper.updatePasswordById(id, tempPw); // 현재 프로젝트 평문 저장 정책에 맞춤
+	    return updated > 0 ? tempPw : null;
+	}
+
+	// 간단 임시 비밀번호 생성(영문+숫자+특수 최소 1개씩)
+	private String genTempPassword(int len) {
+	    String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	    String nums = "0123456789";
+	    String specials = "@$!%*#?&~";
+	    String all = letters + nums + specials;
+
+	    StringBuilder sb = new StringBuilder();
+	    java.util.Random r = new java.util.Random();           //랜덤 숫자 생성 객체
+	    sb.append(letters.charAt(r.nextInt(letters.length())));          
+	    sb.append(nums.charAt(r.nextInt(nums.length())));           
+	    sb.append(specials.charAt(r.nextInt(specials.length())));   
+	    for (int i = 3; i < len; i++) sb.append(all.charAt(r.nextInt(all.length())));
+	    return sb.toString();
+	}
+	
+	
 }

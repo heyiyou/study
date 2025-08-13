@@ -10,4 +10,6 @@ public interface MemberService {
 	boolean isEmailTaken(String email);
 	boolean updateMember(MemberDto dto);
 	MemberDto findById(String id);
+	String findIdByNameAndEmail(String name, String email);
+	String issueTempPassword(String id, String email);
 }

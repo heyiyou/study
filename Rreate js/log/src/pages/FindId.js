@@ -19,12 +19,12 @@ export default function FindId() {
     if (!form.name.trim() || !form.email.trim()) return;
 
     try {
-      setLoading(true);
-      // 🔧 백엔드 준비되면 실제 엔드포인트로 수정하세요.
-      // 예시: GET /cal/member/find-id?name=...&email=...
-      const { data } = await axios.get(
-        `http://localhost:8080/cal/member/find-id-by?name=${encodeURIComponent(form.name.trim())}&email=${encodeURIComponent(form.email.trim())}`
-      );
+    setLoading(true);
+    const { data } = await axios.get('http://localhost:8080/cal/member/find-id-by', {
+      params: { name: form.name.trim(), email: form.email.trim() },
+      withCredentials: true,
+    });
+
       setResult(`찾은 아이디: ${data.id}`);
     } catch (err) {
       setResult('일치하는 정보가 없습니다.');

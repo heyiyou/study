@@ -86,3 +86,37 @@
   border-radius: 8px;
 }
 .linkBtn:hover { background: #f3f4f6; color: var(--text); }
+
+
+/* === Temp Password Box (임시 비밀번호 표시 박스) === */
+.tempBox {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.tempHint {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.tempRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tempInput {
+  flex: 1;
+}
+
+/* 버튼들은 기존 .linkBtn 재사용 가능 */
+.tempActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 10px;
+}

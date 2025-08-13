@@ -1,5 +1,7 @@
 package com.cal.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -166,4 +168,43 @@ public class MemberController {
 	        		.build(); // 찾을 수 없음
 	    }
 	}
+	
+	
+	
+	  @GetMapping("/find-id-by")
+	    public ResponseEntity<Map<String, String>> findIdBy(
+	            @RequestParam String name,
+	            @RequestParam String email) {
+
+	        String id = service.findIdByNameAndEmail(name, email);
+	        if (id == null) {
+	            return ResponseEntity.status(404)
+	                    .body(Map.of("message", "일치하는 정보가 없습니다."));
+	        }
+	        
+	        return ResponseEntity.ok(Map.of(
+	                "id", id,              
+	                "message", "아이디를 찾았습니다."
+	        ));
+	    }
+
+
+	//  비밀번호 찾기 (아이디+이메일 확인 → 임시 비밀번호 발급 & 즉시 응답으로 반환)
+	@PostMapping("/reset-password-request")
+	public ResponseEntity<Map<String, String>> resetPasswordRequest(@RequestBody Map<String, String> body) {
+	    String id = body.get("id");
+	    String email = body.get("email");
+
+	    String tempPw = service.issueTempPassword(id, email);
+	    if (tempPw == null) {
+	        return ResponseEntity.status(404)
+	        		.body(Map.of("message", "일치하는 계정이 없습니다."));
+	    }
+	    // 화면에 보여줄 임시 비밀번호를 그대로 리턴
+	    return ResponseEntity.ok(Map.of(
+	            "message", "임시 비밀번호가 발급되었습니다.",
+	            "tempPassword", tempPw
+	    ));
+	}
 }
+

@@ -30,8 +30,30 @@
 	    password = #{password},
 	    nickname = #{nickname},
 	    email = #{email}
-	  WHERE id = #{id}
+	  WHERE id = #{id} 
 	</update>
+	
+	
+	
+	
+	<!-- 이름+이메일로 id 찾기 -->
+<select id="findIdByNameEmail" resultType="string">
+    SELECT id FROM member 
+    WHERE name = #{name} AND email = #{email}
+</select>
+
+<!-- 임시 비밀번호로 업데이트 -->
+<update id="updatePasswordById">
+  UPDATE member
+  SET password = #{password}
+  WHERE id = #{id}
+</update>
+
+
+
+
+
+
 
 </mapper>
     
